@@ -11,9 +11,19 @@ public class NbQuickCheck {
    * @param root the root node to start traversal from
    */
   public static void preOrder(Map<Integer, List<Integer>> tree, int root) {
-    if(!tree.containsKey(root)) {
-      return;
+    
+    if(!tree.containsKey(root)) return;
+    
+    //print root
+    System.out.println(root);
+    if(tree.get(root).size() == 0) return;
+    //traverse children
+    for(int child : tree.get(root)){
+      preOrder(tree, child);
     }
+    //
+
+
   }
 
   /**
