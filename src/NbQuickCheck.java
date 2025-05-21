@@ -21,9 +21,6 @@ public class NbQuickCheck {
     for(int child : tree.get(root)){
       preOrder(tree, child);
     }
-    //
-
-
   }
 
   /**
@@ -34,7 +31,19 @@ public class NbQuickCheck {
    * @return the minimum value in the tree or Integer.MAX_VALUE if root is null
    */
   public static int minVal(Node<Integer> root) {
-    return -1;
+    int min = Integer.MAX_VALUE;
+    if(root == null) return min;
+    return minVal(root, min);
   }
+  public static int minVal(Node<Integer> root, int min){
+    if(root.value < min) min = root.value;
+    
+    for(Node<Integer> child : root.children){
+      int childMin = minVal(child, min);
+      if(childMin < min) min = childMin;
+    }
+    return min;
+  }
+
   
 }
